@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.11.2
+
+### Fixes
+- Fix bug in the FPGA image. The PDM output for channels 2-4 was always off in the reset manager.
+
+## 0.11.1
+
+### Fixes
+- Fix communication bugs in the Julia client
+
 ## 0.11.0
 
 ### Breaking Changes
