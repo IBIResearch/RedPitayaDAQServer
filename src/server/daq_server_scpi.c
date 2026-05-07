@@ -274,7 +274,6 @@ int main(int argc, char** argv) {
 		int clifdTmp = accept(listenfd, (struct sockaddr *) &cliaddr, &clilen);
 		if (clifdTmp >= 0) {
 			LOG_INFO("Connection established %s\r\n", inet_ntoa(cliaddr.sin_addr));
-			clifd = clifdTmp;
 
 			// if comm thread still running -> join it
 			if(commThreadRunning) {
@@ -282,6 +281,7 @@ int main(int argc, char** argv) {
 				pthread_join(pComm, NULL);
 			}
 
+			clifd = clifdTmp;
 			scpi_context.user_context = &clifd;
 
 			if(controlThreadRunning) {
