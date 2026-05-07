@@ -276,13 +276,13 @@ int main(int argc, char** argv) {
 			LOG_INFO("Connection established %s\r\n", inet_ntoa(cliaddr.sin_addr));
 			clifd = clifdTmp;
 
-			scpi_context.user_context = &clifd;
-
 			// if comm thread still running -> join it
 			if(commThreadRunning) {
 				commThreadRunning = false;
 				pthread_join(pComm, NULL);
 			}
+
+			scpi_context.user_context = &clifd;
 
 			if(controlThreadRunning) {
 				joinControlThread();
